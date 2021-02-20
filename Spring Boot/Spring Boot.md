@@ -694,7 +694,7 @@ Spring Boot里面没有Spring的配置文件，我们自己编写的配置文件
 </beans>
 ```
 
-SpringBoot推荐给容器中添加组件的方式；推荐使用全注解的方式
+SpringBoot推荐给容器中添加组件的方式；推荐使用全注解的方式 推荐推荐推荐推荐
 
 1、配置类**@Configuration**------>Spring配置文件
 
@@ -741,7 +741,7 @@ person.boss=false
 person.maps.k1=v1
 person.maps.k2=14
 person.lists=a,b,c
-person.dog.name=${person.hello:hello}_dog
+person.dog.name=${person.hello:hello}_dog 
 person.dog.age=15
 ```
 
@@ -754,6 +754,8 @@ person.dog.age=15
 我们在主配置文件编写的时候，文件名可以是   application-{profile}.properties/yml
 
 默认使用application.properties的配置；
+
+
 
 
 
@@ -904,7 +906,6 @@ java -jar spring-boot-02-config-02-0.0.1-SNAPSHOT.jar --server.port=8087  --serv
 
     ```
 
-    
 
 **==将 类路径下  META-INF/spring.factories 里面配置的所有EnableAutoConfiguration的值加入到了容器中；==**
 
@@ -1064,8 +1065,6 @@ public class HttpEncodingProperties {
 
    public static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");
 ```
-
-
 
 
 

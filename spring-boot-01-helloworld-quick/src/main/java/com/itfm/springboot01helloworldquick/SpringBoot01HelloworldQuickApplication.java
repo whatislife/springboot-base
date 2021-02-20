@@ -1,4 +1,4 @@
-package com.icbc.springboot01helloworldquick;
+package com.itfm.springboot01helloworldquick;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

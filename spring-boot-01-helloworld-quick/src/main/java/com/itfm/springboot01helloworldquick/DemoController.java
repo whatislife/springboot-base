@@ -1,4 +1,4 @@
-package com.icbc.springboot01helloworldquick;
+package com.itfm.springboot01helloworldquick;
 
 /**
  * @ProjectName: spring-boot-01-helloworld-quick
@@ -11,7 +11,6 @@ package com.icbc.springboot01helloworldquick;
  */
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 

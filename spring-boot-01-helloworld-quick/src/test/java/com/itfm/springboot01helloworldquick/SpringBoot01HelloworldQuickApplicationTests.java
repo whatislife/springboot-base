@@ -1,4 +1,4 @@
-package com.icbc.springboot01helloworldquick;
+package com.itfm.springboot01helloworldquick;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
