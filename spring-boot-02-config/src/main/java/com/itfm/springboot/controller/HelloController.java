@@ -4,7 +4,7 @@ package com.itfm.springboot.controller;
  * @ProjectName: spring-boot-02-config
  * @Package: com.itfm.springboot.controller
  * @ClassName: HelloController
- * @Author: ICBC
+ * @Author: frankman
  * @Description: 这是控制层
  * @Date: 2021/2/22 17:48
  * @Version: 1.0

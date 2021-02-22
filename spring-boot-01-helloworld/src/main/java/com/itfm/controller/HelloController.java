@@ -2,9 +2,9 @@ package com.itfm.controller;
 
 /**
  * @ProjectName: spring-boot-01-helloworld
- * @Package: com.icbc.controller
+ * @Package: com.frankman.controller
  * @ClassName: HelloController
- * @Author: ICBC
+ * @Author: frankman
  * @Description: 控制层
  * @Date: 2021/2/17 20:21
  * @Version: 1.0

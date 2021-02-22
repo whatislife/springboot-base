@@ -4,7 +4,7 @@ package com.itfm;
  * @ProjectName: spring-boot-02-config
  * @Package: com.com.itfm
  * @ClassName: SpringBoot02ConfigApplication
- * @Author: ICBC
+ * @Author: frankman
  * @Description: 启动类
  * @Date: 2021/2/22 10:21
  * @Version: 1.0

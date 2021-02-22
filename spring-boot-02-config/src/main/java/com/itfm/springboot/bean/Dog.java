@@ -4,7 +4,7 @@ package com.itfm.springboot.bean;
  * @ProjectName: spring-boot-02-config
  * @Package: com.itfm.springboot.bean
  * @ClassName: Dog
- * @Author: ICBC
+ * @Author: frankman
  * @Description:
  * @Date: 2021/2/22 15:57
  * @Version: 1.0

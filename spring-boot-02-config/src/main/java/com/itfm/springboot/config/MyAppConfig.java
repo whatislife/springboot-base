@@ -4,7 +4,7 @@ package com.itfm.springboot.config;
  * @ProjectName: spring-boot-02-config
  * @Package: com.itfm.springboot.config
  * @ClassName: MyAppConfig
- * @Author: ICBC
+ * @Author: frankman
  * @Description: 这是一个配置类
  * @Date: 2021/2/22 17:34
  * @Version: 1.0

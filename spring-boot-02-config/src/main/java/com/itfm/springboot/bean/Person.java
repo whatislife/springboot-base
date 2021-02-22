@@ -4,7 +4,7 @@ package com.itfm.springboot.bean;
  * @ProjectName: spring-boot-02-config
  * @Package: com.itfm.springboot.bean
  * @ClassName: Person
- * @Author: ICBC
+ * @Author: frankman
  * @Description: bean实体类
  * @Date: 2021/2/22 13:54
  * @Version: 1.0

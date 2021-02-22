@@ -2,9 +2,9 @@ package com.itfm.springboot01helloworldquick;
 
 /**
  * @ProjectName: spring-boot-01-helloworld-quick
- * @Package: com.icbc.springboot01helloworldquick
+ * @Package: com.frankman.springboot01helloworldquick
  * @ClassName: DemoController
- * @Author: ICBC
+ * @Author: frankman
  * @Description: 快速向导生成代码
  * @Date: 2021/2/17 21:59
  * @Version: 1.0

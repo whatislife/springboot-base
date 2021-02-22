@@ -2,9 +2,9 @@ package com.itfm;
 
 /**
  * @ProjectName: spring-boot-01-helloworld
- * @Package: com.icbc
+ * @Package: com.frankman
  * @ClassName: HelloWorldMainApplication
- * @Author: ICBC
+ * @Author: frankman
  * @Description: springboot工程
  * @Date: 2021/2/17 20:17
  * @Version: 1.0
