@@ -12,12 +12,16 @@ package com.itfm;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ImportResource;
 
 /**
  * @Description TODO
  * @Author frankman
  * @Date 2021/2/22 10:21
  */
+//1.通过xml文件导入bean数据
+//@ImportResource(locations={"classpath:beans.xml"})
+//2.通过配置类的方式获取bean数据  参考config包@Bean类
 @SpringBootApplication
 public class SpringBoot02ConfigApplication {
     public static void main(String[] args) {
