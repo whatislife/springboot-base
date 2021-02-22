@@ -755,6 +755,8 @@ person.dog.age=15
 
 默认使用application.properties的配置；
 
+创建多个文件，spring.proflies.active=dev 进行指定使用哪个配置文件（profiles不是profile容易写错）
+
 
 
 application.properties根据profile支持多个配置文件
@@ -764,6 +766,10 @@ application.yml根据profile支持单一配置文件多个模块
 
 
 ### 2、yml支持多文档块方式
+
+多文档块的使用，就是一个配置文件中通过---区分部分，通过spring.profile:dev设置那种模式
+
+通过profile.profiles.active=dev确定那种类型生效
 
 ```yml
 
