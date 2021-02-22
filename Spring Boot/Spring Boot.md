@@ -757,6 +757,10 @@ person.dog.age=15
 
 
 
+application.properties根据profile支持多个配置文件
+
+application.yml根据profile支持单一配置文件多个模块
+
 
 
 ### 2、yml支持多文档块方式
@@ -783,8 +787,6 @@ server:
 spring:
   profiles: prod  #指定属于哪个环境
 ```
-
-
 
 
 
@@ -822,7 +824,7 @@ SpringBoot会从这四个位置全部加载主配置文件；**互补配置**；
 
 
 
-==我们还可以通过spring.config.location来改变默认的配置文件位置==
+==我们还可以通过spring.config.location来改变默认的配置文件位置== **这个很特别** spring.config.location
 
 **项目打包好以后，我们可以使用命令行参数的形式，启动项目的时候来指定配置文件的新位置；指定配置文件和默认加载的这些配置文件共同起作用形成互补配置；**
 
@@ -877,6 +879,8 @@ java -jar spring-boot-02-config-02-0.0.1-SNAPSHOT.jar --server.port=8087  --serv
 所有支持的配置加载来源；
 
 [参考官方文档](https://docs.spring.io/spring-boot/docs/1.5.9.RELEASE/reference/htmlsingle/#boot-features-external-config)
+
+文档总结如下几个，实际情况，官网配置一共11个
 
 ## 8、自动配置原理
 
