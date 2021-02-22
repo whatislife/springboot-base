@@ -806,11 +806,17 @@ spring:
 
 ​		可以直接在测试的时候，配置传入命令行参数
 
+idea通过如下方式设置 
+
+![](images/2-53.png)
+
 ​	3、虚拟机参数；
 
 ​		-Dspring.profiles.active=dev
 
+ide通过如下方式设置 
 
+![](images/2-52.png)
 
 ## 6、配置文件加载位置
 

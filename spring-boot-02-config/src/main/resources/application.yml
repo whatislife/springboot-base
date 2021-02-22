@@ -1,0 +1,21 @@
+
+server:
+  port: 8081
+spring:
+  profiles:
+    active: prod
+
+# 通过不同的文档那个块设置激活的配置文件
+---
+server:
+  port: 8083
+spring:
+  profiles: dev
+
+
+---
+
+server:
+  port: 8084
+spring:
+  profiles: prod
