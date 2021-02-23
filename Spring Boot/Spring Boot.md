@@ -1230,7 +1230,7 @@ public class HelloWorld {
 }
 ```
 
-图示；
+图示； 日志门面是slf4j，实现是还是具体日志 
 
 ![images/concrete-bindings.png](images/concrete-bindings.png)
 
@@ -1240,7 +1240,7 @@ public class HelloWorld {
 
 a（slf4j+logback）: Spring（commons-logging）、Hibernate（jboss-logging）、MyBatis、xxxx
 
-统一日志记录，即使是别的框架和我一起统一使用slf4j进行输出？
+**统一日志记录，即使是别的框架和我一起统一使用slf4j进行输出？**
 
 ![](images/legacy.png)
 
@@ -1321,6 +1321,21 @@ public abstract class LogFactory {
 ## 4、日志使用；
 
 ### 1、默认配置
+
+引入web依赖和测试依赖 
+
+> ```
+> <dependency>
+>     <groupId>org.springframework.boot</groupId>
+>     <artifactId>spring-boot-starter-web</artifactId>
+> </dependency>
+> 
+> <dependency>
+>     <groupId>org.springframework.boot</groupId>
+>     <artifactId>spring-boot-starter-test</artifactId>
+>     <scope>test</scope>
+> </dependency>
+> ```
 
 SpringBoot默认帮我们配置好了日志；
 
