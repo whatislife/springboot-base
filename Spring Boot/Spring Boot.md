@@ -1540,20 +1540,20 @@ xxxxProperties:配置类来封装配置文件的内容；
 
 ```
 
-
+![](images/3-1.png)
 
 ## 2、SpringBoot对静态资源的映射规则；
 
 ```java
 @ConfigurationProperties(prefix = "spring.resources", ignoreUnknownFields = false)
 public class ResourceProperties implements ResourceLoaderAware {
-  //可以设置和静态资源有关的参数，缓存时间等
+  //可以设置和静态资源有关的参数，缓存时间等  设置本系统资源规则资源规则资源规则 
 ```
 
 
 
 ```java
-	WebMvcAuotConfiguration：
+	WebMvcAuotConfiguration：中的代码 重要部分 addResourceHandlers
 		@Override
 		public void addResourceHandlers(ResourceHandlerRegistry registry) {
 			if (!this.resourceProperties.isAddMappings()) {
@@ -1620,20 +1620,22 @@ public class ResourceProperties implements ResourceLoaderAware {
 
 ```
 
+上边代码解释 
 
+外部资源
 
 ==1）、所有 /webjars/** ，都去 classpath:/META-INF/resources/webjars/ 找资源；==
 
-​	webjars：以jar包的方式引入静态资源；
+​	webjars：解释意思，以jar包的方式引入静态资源；
 
 http://www.webjars.org/
 
 ![](images/搜狗截图20180203181751.png)
 
-localhost:8080/webjars/jquery/3.3.1/jquery.js
+localhost:8080/webjars/jquery/3.3.1/jquery.js  只需要提供依赖就是可以，访问静态资源 
 
 ```xml
-<!--引入jquery-webjar-->在访问的时候只需要写webjars下面资源的名称即可
+<!--引入jquery-webjar-->在访问的时候只需要写webjars下面资源的名称即可  
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
@@ -1641,9 +1643,9 @@ localhost:8080/webjars/jquery/3.3.1/jquery.js
 		</dependency>
 ```
 
+自己的资源
 
-
-==2）、"/**" 访问当前项目的任何资源，都去（静态资源的文件夹）找映射==
+==2）、"/**" 访问当前项目的自己的任何资源，都去（静态资源的文件夹）找映射==
 
 ```
 "classpath:/META-INF/resources/", 
@@ -1655,6 +1657,8 @@ localhost:8080/webjars/jquery/3.3.1/jquery.js
 
 localhost:8080/abc ===  去静态资源文件夹里面找abc
 
+http://localhost:8080/asserts/img/bootstrap-solid.svg 可以访问到的静态资源 
+
 ==3）、欢迎页； 静态资源文件夹下的所有index.html页面；被"/**"映射；==
 
 ​	localhost:8080/   找index页面
@@ -1662,6 +1666,13 @@ localhost:8080/abc ===  去静态资源文件夹里面找abc
 ==4）、所有的 **/favicon.ico  都是在静态资源文件下找；==
 
 
+
+可以定义图标的位置  
+
+```xml
+# 指定图标路径，只有这个路径下才能访问到  可以是数组 
+#spring.resources.static-locations=classpath:/itfm/
+```
 
 ## 3、模板引擎
 
