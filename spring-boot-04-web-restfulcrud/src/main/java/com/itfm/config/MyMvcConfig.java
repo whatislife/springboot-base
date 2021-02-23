@@ -10,9 +10,8 @@ package com.itfm.config;
  * @Version: 1.0
  */
 
-import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -34,5 +33,22 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
 //        super.addViewControllers(registry);
         //浏览器发送 /itfm 请求来到success界面
         registry.addViewController("/itfm").setViewName("success");
+    }
+
+    //所有的webmvcconfigAdapter组件都会一起起作用
+    //替换helloController类中的index方法，访问index.html页面
+    @Bean //组件注册在容器中，才能生效
+    public WebMvcConfigurerAdapter webMvcConfigurerAdapter(){
+        WebMvcConfigurerAdapter adapter = new WebMvcConfigurerAdapter() {
+        //内部类里实现 ctrl + O 实现试图映射
+            @Override
+            public void addViewControllers(ViewControllerRegistry registry) {
+//                super.addViewControllers(registry);
+             registry.addViewController("/").setViewName("login");
+             registry.addViewController("/login.html").setViewName("login");
+             //shift + F6修改文件名称
+            }
+        };
+        return adapter;
     }
 }

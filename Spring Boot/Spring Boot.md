@@ -1,3 +1,13 @@
+
+
+
+
+
+
+
+
+
+
 # **一、**Spring Boot 入门
 
 ## 1、Spring Boot 简介
@@ -2061,6 +2071,15 @@ public class WebMvcAutoConfiguration {
 
 ### 1）、默认访问首页
 
+第一种方法 HelloController添加index，模板引擎进行访问 
+
+```java
+//    @RequestMapping({"/","/index.html"})
+//    public String index(){
+//        return "index";
+//    }
+```
+
 ```java
 
 //使用WebMvcConfigurerAdapter可以来扩展SpringMVC的功能
@@ -2090,6 +2109,28 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
 }
 
 ```
+
+============================
+
+引入webjars  pom.xml引入依赖 
+
+![](images/4-2.png)
+
+引入webjars   如下引用方式  替换原有引用通过webjars引用 
+
+<link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet">
+
+```html
+Integer cachePeriod = this.resourceProperties.getCachePeriod();
+		if (!registry.hasMappingForPattern("/webjars/**")) {
+			customizeResourceHandlerRegistration(
+					registry.addResourceHandler("/webjars/**")
+							.addResourceLocations(
+									"classpath:/META-INF/resources/webjars/")
+					.setCachePeriod(cachePeriod));
+		}
+```
+
 
 ### 2）、国际化
 

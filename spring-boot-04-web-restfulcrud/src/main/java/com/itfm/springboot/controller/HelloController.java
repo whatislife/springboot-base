@@ -37,4 +37,15 @@ public class HelloController {
         map.put("hello", "你好");
         return "success";
     }
+
+    /**
+     * 访问当前项目下的首页，static下的index.html页面
+     * 这个方法比较麻烦，在配置类中添加试图映射，MyCOnfig中添加
+     * @return
+     */
+//    @RequestMapping({"/", "/login.html"})
+//    public String index() {
+//        return "login";
+//    }
+
 }
