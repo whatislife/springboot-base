@@ -10,20 +10,31 @@ package com.itfm.springboot.controller;
  * @Version: 1.0
  */
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
 
 /**
  * @Description TODO
  * @Author frankman
  * @Date 2021/2/23 15:24
  */
-@RestController
+@Controller
 public class HelloController {
     @ResponseBody
     @RequestMapping("/hello")
-    public String helloWorld(){
+    public String helloWorld() {
         return "hello world ";
+    }
+
+    // 查询出来数据在页面会展示
+    @RequestMapping("/success")
+    public String success(Map<String, Object> map) {
+        //classpath:/templates/success.   success.html文件
+        map.put("hello", "你好");
+        return "success";
     }
 }

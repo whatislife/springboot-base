@@ -1678,17 +1678,27 @@ http://localhost:8080/asserts/img/bootstrap-solid.svg 可以访问到的静态�
 
 JSP、Velocity、Freemarker、Thymeleaf
 
+思想：书写一个页面模板，组装一些数据，模板和数据交给模板引擎，填充到指定位置，生成想要的内容
+
+
+
 ![](images/template-engine.png)
 
 
 
 SpringBoot推荐的Thymeleaf；
 
-语法更简单，功能更强大；
+语法更简单，功能更强大；高级语言的模板引擎 
 
 
 
 ### 1、引入thymeleaf；
+
+都是一个starter的事情，pom文件中引入starter
+
+官方文档里有例子 
+
+![](images/3-2.png)
 
 ```xml
 		<dependency>
@@ -1709,6 +1719,8 @@ SpringBoot推荐的Thymeleaf；
 
 ### 2、Thymeleaf使用
 
+源码
+
 ```java
 @ConfigurationProperties(prefix = "spring.thymeleaf")
 public class ThymeleafProperties {
@@ -1720,14 +1732,14 @@ public class ThymeleafProperties {
 	public static final String DEFAULT_PREFIX = "classpath:/templates/";
 
 	public static final String DEFAULT_SUFFIX = ".html";
-  	//
+  	//前后缀，解析
 ```
 
 只要我们把HTML页面放在classpath:/templates/，thymeleaf就能自动渲染；
 
 使用：
 
-1、导入thymeleaf的名称空间
+1、导入thymeleaf的名称空间  导入的目的就是有语法提示，也可以不导入 
 
 ```xml
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
