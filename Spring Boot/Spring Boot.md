@@ -1852,14 +1852,20 @@ https://docs.spring.io/spring-boot/docs/1.5.10.RELEASE/reference/htmlsingle/#boo
 
 ### 1. Spring MVC auto-configuration
 
+官网文档截图：
+
+![](images/4-1.png)
+
+官网文档解释：
+
 Spring Boot 自动配置好了SpringMVC
 
 以下是SpringBoot对SpringMVC的默认配置:**==（WebMvcAutoConfiguration）==**
 
 - Inclusion of `ContentNegotiatingViewResolver` and `BeanNameViewResolver` beans.
-  - 自动配置了ViewResolver（视图解析器：根据方法的返回值得到视图对象（View），视图对象决定如何渲染（转发？重定向？））
-  - ContentNegotiatingViewResolver：组合所有的视图解析器的；
-  - ==如何定制：我们可以自己给容器中添加一个视图解析器；自动的将其组合进来；==
+  - 自动配置了ViewResolver（视图解析器：根据方法的返回值得到视图对象（就是View对象），视图对象决定如何渲染（是转发？还是重定向？））
+  - ContentNegotiatingViewResolver：作用就是组合所有的视图解析器的；
+  - ==我们如何定制试图解析器：我们可以自己给容器中添加一个视图解析器；自动的将其组合进来；==
 
 - Support for serving static resources, including support for WebJars (see below).静态资源文件夹路径,webjars
 
@@ -1875,22 +1881,23 @@ Spring Boot 自动配置好了SpringMVC
   - `Formatter`  格式化器；  2017.12.17===Date；
 
 ```java
-		@Bean
-		@ConditionalOnProperty(prefix = "spring.mvc", name = "date-format")//在文件中配置日期格式化的规则
+注册的条件		
+        @Bean
+		@ConditionalOnProperty(prefix = "spring.mvc", name = "date-format")//在文件中配置日期格式化的规则  
 		public Formatter<Date> dateFormatter() {
 			return new DateFormatter(this.mvcProperties.getDateFormat());//日期格式化组件
 		}
 ```
 
-​	==自己添加的格式化器转换器，我们只需要放在容器中即可==
+​	==自己添加的格式化器或转换器，我们只需要放在容器中即可   我们自己做也可以==
 
 - Support for `HttpMessageConverters` (see below).
 
-  - HttpMessageConverter：SpringMVC用来转换Http请求和响应的；User---Json；
+  - HttpMessageConverter：SpringMVC用来转换Http请求和响应的；User---Json（user以json的方式显示出去）；  消息转换器
 
   - `HttpMessageConverters` 是从容器中确定；获取所有的HttpMessageConverter；
 
-    ==自己给容器中添加HttpMessageConverter，只需要将自己的组件注册容器中（@Bean,@Component）==
+    ==自己给容器中添加HttpMessageConverter，只需要将自己的组件注册容器中  扫描到容器就可以（@Bean,@Component）==
 
     
 
@@ -1905,7 +1912,9 @@ Spring Boot 自动配置好了SpringMVC
   请求数据=====JavaBean；
   ```
 
-**org.springframework.boot.autoconfigure.web：web的所有自动场景；**
+**org.springframework.boot.autoconfigure.web：web的所有自动场景；** 这个路径下的是自动配置场景 
+
+
 
 If you want to keep Spring Boot MVC features, and you just want to add additional [MVC configuration](https://docs.spring.io/spring/docs/4.3.14.RELEASE/spring-framework-reference/htmlsingle#mvc) (interceptors, formatters, view controllers etc.) you can add your own `@Configuration` class of type `WebMvcConfigurerAdapter`, but **without** `@EnableWebMvc`. If you wish to provide custom instances of `RequestMappingHandlerMapping`, `RequestMappingHandlerAdapter` or `ExceptionHandlerExceptionResolver` you can declare a `WebMvcRegistrationsAdapter` instance providing such components.
 
@@ -1925,7 +1934,7 @@ If you want to take complete control of Spring MVC, you can add your own `@Confi
 
 **==编写一个配置类（@Configuration），是WebMvcConfigurerAdapter类型；不能标注@EnableWebMvc==**;
 
-既保留了所有的自动配置，也能用我们扩展的配置；
+扩展springmvc ，既保留了所有的自动配置，也能用我们扩展的配置；
 
 ```java
 //使用WebMvcConfigurerAdapter可以来扩展SpringMVC的功能
@@ -1941,18 +1950,20 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
 }
 ```
 
-原理：
+什么原理呢：
 
 ​	1）、WebMvcAutoConfiguration是SpringMVC的自动配置类
 
 ​	2）、在做其他自动配置时会导入；@Import(**EnableWebMvcConfiguration**.class)
+
+目的是干什么的呢？
 
 ```java
     @Configuration
 	public static class EnableWebMvcConfiguration extends DelegatingWebMvcConfiguration {
       private final WebMvcConfigurerComposite configurers = new WebMvcConfigurerComposite();
 
-	 //从容器中获取所有的WebMvcConfigurer
+	 //从容器中获取所有的WebMvcConfigurer  自动装配，如果是自动装配，参数就需要从容器中获取 
       @Autowired(required = false)
       public void setConfigurers(List<WebMvcConfigurer> configurers) {
           if (!CollectionUtils.isEmpty(configurers)) {
@@ -1974,9 +1985,11 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
 
 ​	效果：SpringMVC的自动配置和我们的扩展配置都会起作用；
 
-### 3、全面接管SpringMVC；
+### 3、全面接管SpringMVC；全部自己配置
 
 SpringBoot对SpringMVC的自动配置不需要了，所有都是我们自己配置；所有的SpringMVC的自动配置都失效了
+
+静态资源都无法使用了，不推荐全面接管
 
 **我们需要在配置类中添加@EnableWebMvc即可；**
 
@@ -2036,9 +2049,9 @@ public class WebMvcAutoConfiguration {
 
 ## 5、如何修改SpringBoot的默认配置
 
-模式：
+总结模式： 不单纯使用web容器，其他也可以适用的
 
-​	1）、SpringBoot在自动配置很多组件的时候，先看容器中有没有用户自己配置的（@Bean、@Component）如果有就用用户配置的，如果没有，才自动配置；如果有些组件可以有多个（ViewResolver）将用户配置的和自己默认的组合起来；
+​	1）、SpringBoot在自动配置很多组件的时候，先看容器中有没有用户自己配置的（@Bean、@Component）如果有就用用户配置的，如果没有，才自动配置；如果有些组件可以有多个（比如 ViewResolver）将用户配置的和自己默认的组合起来；
 
 ​	2）、在SpringBoot中会有非常多的xxxConfigurer帮助我们进行扩展配置
 
