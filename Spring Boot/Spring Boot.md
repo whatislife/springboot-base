@@ -3475,6 +3475,28 @@ public ConfigurableApplicationContext run(String... args) {
 
 
 
+启动tomcat步骤 
+
+https://blog.csdn.net/weixin_46693274/article/details/112518786
+
+tomcat部署设置 
+
+![](images/5-1.png)
+
+
+
+![](images/5-2.png)
+
+设置访问路径
+
+![](images/5-3.png)
+
+设置启动乱码
+
+![](images/5-4.png)
+
+
+
 # 五、Docker
 
 ## 1、简介
