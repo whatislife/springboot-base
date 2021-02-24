@@ -1868,7 +1868,7 @@ https://docs.spring.io/spring-boot/docs/1.5.10.RELEASE/reference/htmlsingle/#boo
 
 官网文档解释：
 
-Spring Boot 自动配置好了SpringMVC
+Spring Boot 自动配置好了SpringMVC 
 
 以下是SpringBoot对SpringMVC的默认配置:**==（WebMvcAutoConfiguration）==**
 
@@ -2016,6 +2016,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/atguigu").setViewName("success");
     }
 }
+
 ```
 
 原理：
@@ -2254,7 +2255,7 @@ public class MessageSourceAutoConfiguration {
 默认的就是根据请求头带来的区域信息获取Locale进行国际化
 ```
 
-4）、点击链接切换国际化
+4）、点击链接切换国际化	
 
 ```java
 /**
@@ -2288,6 +2289,8 @@ public class MyLocaleResolver implements LocaleResolver {
 
 
 ```
+
+
 
 ### 3）、登陆
 

@@ -10,8 +10,10 @@ package com.itfm.config;
  * @Version: 1.0
  */
 
+import com.itfm.component.MyLocaleResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
@@ -38,17 +40,27 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
     //所有的webmvcconfigAdapter组件都会一起起作用
     //替换helloController类中的index方法，访问index.html页面
     @Bean //组件注册在容器中，才能生效
-    public WebMvcConfigurerAdapter webMvcConfigurerAdapter(){
+    public WebMvcConfigurerAdapter webMvcConfigurerAdapter() {
         WebMvcConfigurerAdapter adapter = new WebMvcConfigurerAdapter() {
-        //内部类里实现 ctrl + O 实现试图映射
+            //内部类里实现 ctrl + O 实现试图映射
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
 //                super.addViewControllers(registry);
-             registry.addViewController("/").setViewName("login");
-             registry.addViewController("/login.html").setViewName("login");
-             //shift + F6修改文件名称
+                registry.addViewController("/").setViewName("login");
+                registry.addViewController("/index.html").setViewName("login");
+                //shift + F6修改文件名称
             }
         };
         return adapter;
+    }
+
+    /**
+     * 区域信息解析器生效 MyLocaleResolver这个类
+     * @return
+     */
+    @Bean
+    public LocaleResolver localeResolver(){
+
+        return new MyLocaleResolver();
     }
 }
