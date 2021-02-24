@@ -60,8 +60,9 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
                 //super.addInterceptors(registry);
                 //静态资源；  *.css , *.js
                 //SpringBoot已经做好了静态资源映射
-                registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-                        .excludePathPatterns("/index.html","/","/user/login");
+               /* registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
+                        .excludePathPatterns("/index.html","/","/user/login");*/
+               //测试错误码，注释掉这部分，后续打开 
             }
         };
         return adapter;

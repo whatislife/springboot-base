@@ -10,8 +10,10 @@ package com.itfm.springboot.controller;
  * @Version: 1.0
  */
 
+import com.itfm.exception.UserNotExistException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Map;
@@ -23,11 +25,18 @@ import java.util.Map;
  */
 @Controller
 public class HelloController {
+
     @ResponseBody
     @RequestMapping("/hello")
-    public String helloWorld() {
-        return "hello world ";
+    public  String hello(@RequestParam("user") String user){
+        //模拟异常，调用异常类
+        if(user.equals("aaa")){
+            throw new UserNotExistException();
+        }
+        return "Hello World";
     }
+
+
 
     // 查询出来数据在页面会展示
     @RequestMapping("/success")

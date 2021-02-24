@@ -2639,17 +2639,17 @@ insert的公共片段在div标签中
 
 ![](images/搜狗截图20180226180347.png)
 
-​		2）、如果是其他客户端，默认响应一个json数据
+​		2）、如果是其他客户端，默认响应一个json数据  使用postman模拟请求数据 
 
 ![](images/搜狗截图20180226173527.png)
 
 ​		![](images/搜狗截图20180226180504.png)
 
-原理：
+显示错误原理：
 
 ​	可以参照ErrorMvcAutoConfiguration；错误处理的自动配置；
 
-  	给容器中添加了以下组件
+  	给容器中添加了以下组件 
 
 ​	1、DefaultErrorAttributes：
 
@@ -2791,7 +2791,7 @@ protected ModelAndView resolveErrorView(HttpServletRequest request,
 
 #### 	2）、如何定制错误的json数据；
 
-​		1）、自定义异常处理&返回定制json数据；
+​		1）、自定义异常处理&返回定制json数据； 规范了异常数据格式，可以按照自己的格式进行定制 
 
 ```java
 @ControllerAdvice
@@ -2811,7 +2811,7 @@ public class MyExceptionHandler {
 
 
 
-​		2）、转发到/error进行自适应响应效果处理
+​		2）、转发到/error进行自适应响应效果处理 
 
 ```java
  @ExceptionHandler(UserNotExistException.class)
