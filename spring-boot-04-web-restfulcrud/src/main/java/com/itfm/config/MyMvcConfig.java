@@ -12,6 +12,8 @@ package com.itfm.config;
 
 import com.itfm.component.LoginHandlerInterceptor;
 import com.itfm.component.MyLocaleResolver;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.LocaleResolver;
@@ -62,7 +64,7 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
                 //SpringBoot已经做好了静态资源映射
                /* registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
                         .excludePathPatterns("/index.html","/","/user/login");*/
-               //测试错误码，注释掉这部分，后续打开 
+               //测试错误码，注释掉这部分，后续打开
             }
         };
         return adapter;
@@ -77,4 +79,17 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
 
         return new MyLocaleResolver();
     }
+
+    //配置嵌入式的Servlet容器
+//    @Bean
+//    public EmbeddedServletContainerCustomizer embeddedServletContainerCustomizer(){
+//        return new EmbeddedServletContainerCustomizer() {
+//
+//            //定制嵌入式的Servlet容器相关的规则
+//            @Override
+//            public void customize(ConfigurableEmbeddedServletContainer container) {
+//                container.setPort(8083);
+//            }
+//        };
+//    }
 }

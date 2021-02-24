@@ -2874,6 +2874,8 @@ SpringBoot默认使用Tomcat作为嵌入式的Servlet容器；
 
 ### 1）、如何定制和修改Servlet容器的相关配置；
 
+因为外边tomcat，我们是可以设置修改的，目前嵌入式之后如何修改呢？
+
 1、修改和server有关的配置（ServerProperties【也是EmbeddedServletContainerCustomizer】）；
 
 ```properties
@@ -2882,13 +2884,13 @@ server.context-path=/crud
 
 server.tomcat.uri-encoding=UTF-8
 
-//通用的Servlet容器设置
+//通用的Servlet容器设置  
 server.xxx
-//Tomcat的设置
+//Tomcat的设置  定制化的设置参数 
 server.tomcat.xxx
 ```
 
-2、编写一个**EmbeddedServletContainerCustomizer**：嵌入式的Servlet容器的定制器；来修改Servlet容器的配置
+2、编写一个**EmbeddedServletContainerCustomizer**：嵌入式的Servlet容器的定制器；来修改Servlet容器的配置  可以通过这种模式修改servlet的容器的配置器 
 
 ```java
 @Bean  //一定要将这个定制器加入到容器中
